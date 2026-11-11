@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NILA ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  background: linear-gradient(135deg,#170c27,#702849);
+  color:white;
+  text-align:center;
+  font-family:Georgia;
+  padding:30px 15px;
+}
+.box {
+  max-width:500px;
+  margin:50px auto;
+  padding:25px;
+  background:#ffffff18;
+  border-radius:25px;
+}
+h1 {color:#ff9fc4;font-size:50px;}
+input,textarea {
+  width:90%;padding:12px;margin:10px;
+  border-radius:12px;border:0;
+}
+button {
+  padding:12px 22px;border:0;
+  border-radius:20px;background:#ff8db5;
+  cursor:pointer;margin:8px;
+}
+.message {
+  background:#ffffff20;
+  padding:15px;margin:12px;
+  border-radius:15px;
+}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>🌙 NILA ❤️</h1>
+<p>A Little World Made With Love</p>
+
+<input id="name" placeholder="Enter your name">
+<textarea id="msg" placeholder="Write your message..."></textarea>
+
+<button onclick="addMessage()">Add Message ❤️</button>
+<div id="messages"></div>
+</div>
+
+<script>
+function addMessage(){
+ let name=document.getElementById("name").value;
+ let msg=document.getElementById("msg").value;
+
+ if(msg.trim()===""){
+ alert("Write something first!");
+ return;
+ }
+
+ let box=document.createElement("div");
+ box.className="message";
+
+ let title=document.createElement("h3");
+ title.textContent="For Nila ❤️";
+
+ let content=document.createElement("p");
+ content.textContent=msg;
+
+ let sender=document.createElement("small");
+ sender.textContent="With love, "+(name || "Someone");
+
+ box.append(title,content,sender);
+ document.getElementById("messages").append(box);
+ document.getElementById("msg").value="";
+}
+</script>
+</body>
+</html>
