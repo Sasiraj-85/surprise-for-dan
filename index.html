@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>little suprise on 11:11:2026 at 11:11</title>
+  <title>A little surprise on 11:11:2026 at 11:11</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -19,7 +19,8 @@
     }
     @keyframes float {
       from { transform: translateY(0) rotate(0); opacity: 0; }
-      15% { opacity: .5; } to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+      15% { opacity: .5; }
+      to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
     }
     .card {
       width: min(100%, 620px); padding: clamp(28px, 6vw, 52px);
@@ -55,16 +56,20 @@
   </style>
 </head>
 <body>
-  <div class="hearts" id="hearts"></div>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
   <main class="card">
     <div class="small">A little something for someone special</div>
     <h1>Our Little<br><span>Love Story</span> ♡</h1>
     <p class="subtitle">Some people make ordinary moments feel magical.</p>
 
     <div class="names">
-      <input id="yourName" placeholder="Your name" maxlength="28" />
+      <input id="yourName" placeholder="Your name" maxlength="28" aria-label="Your name" />
     </div>
-    <button onclick="showLove()">Open our message ♡</button>
+
+    <button type="button" onclick="showLove()">Open our message ♡</button>
+
+    <div class="message" id="message" aria-live="polite"></div>
     <div class="signature" id="signature">Made with love ♡</div>
     <div class="hint">Tip: Edit the message in index.html to make it yours.</div>
   </main>
@@ -72,13 +77,16 @@
   <script>
     function showLove() {
       const your = document.getElementById('yourName').value.trim() || 'Someone';
+
       document.getElementById('message').textContent =
-        `${their}, Hey!,life la evlo kashtam vanthalum enkita odi vanthudu naan irukken unakaga irupen,una neraiya hurt pannirken,aana unna vittu ponum nu yosichathu illa ,i love you dhanu ,epavume enna vittu poidatha,i miss you darling♡`;
+        'Hey! Life la evlo kashtam vanthalum enkita odi vanthudu. Naan irukken unakaga irupen. Una neraiya hurt pannirken, aana unna vittu ponum nu yosichathu illa. I love you Dhanu, epavume enna vittu poidatha. I miss you darling ♡';
+
       document.getElementById('signature').textContent = `— With love, ${your} ♡`;
       document.title = `${your} | Our Little Love Story`;
     }
 
     const holder = document.getElementById('hearts');
+
     for (let i = 0; i < 18; i++) {
       const heart = document.createElement('span');
       heart.className = 'heart';
